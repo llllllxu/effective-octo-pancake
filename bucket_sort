@@ -1,0 +1,22 @@
+# If we know the range of input, we could use bucket sort
+# The worst case is O(n2), but average case is O(n+k), where n is the length of input sequence and k is the number of bucket
+# Here is a simple example in Java
+# We suppose that our input is between -m and m
+
+
+Class bucket{
+     public int[] bucket_sort(int[] a){
+          int[] bkt = new int[2*m+1];          // define the buckets
+          int index = 0;
+          for(int i=0; i<a.length;i++){
+               bkt[a[i]+m]++;
+          }
+          
+          for(int j=0; j<bkt.length;j++){
+              for(int k=0; k<bkt[j]; k++){
+                a[index++] = j - m;
+              }
+          }
+          return a;
+     }
+}
